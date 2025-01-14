@@ -3,8 +3,8 @@ import Alert from './components/Alert';
 import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import React, { useState } from 'react'
-import { Link } from "react-router";
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route} from "react-router";
 
 
 function App() {
@@ -46,8 +46,14 @@ function App() {
     <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} changeBackColor={changeBackColor} />
     <div className='container my-3'>
       <Alert alert={alert} />
-      <TextForm heading="Enter the Text" mode={mode} />
-      <About/> 
+      {/* <TextForm heading="Enter the Text" mode={mode} />
+      <About/>  */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TextForm heading="Enter the Text" mode={mode} />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
     </div>
     </>
   );
